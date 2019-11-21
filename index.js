@@ -11,7 +11,7 @@ const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = req
 
 // This bot's main dialog.
 const { DialogBot } = require('./bots/dialogBot');
-const { UserProfileDialog } = require('./dialogs/userProfileDialog');
+const { OrderDialog } = require('./dialogs/orderDialog');
 
 // Import required bot configuration.
 const ENV_FILE = path.join(__dirname, '.env');
@@ -55,7 +55,7 @@ adapter.onTurnError = async (context, error) => {
     const userState = new UserState(memoryStorage);
 
     // Create the main dialog.
-    const dialog = new UserProfileDialog(userState);
+    const dialog = new OrderDialog(userState);
     const bot = new DialogBot(conversationState, userState, dialog);
 
     // Create HTTP server
